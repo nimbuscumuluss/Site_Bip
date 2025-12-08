@@ -1,0 +1,530 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Podcast | BIP Fala</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="icon" type="image/png" href="img/favicon.ico">
+    <style>
+        :root {
+            --teal-600: #06b6d4;
+            --deep: #0E143F;
+        }
+
+        body {
+            font-family: "Montserrat", sans-serif;
+            background: #ffffff;
+            color: #1f2937;
+        }
+
+        /* hero */
+        .hero-bg {
+            background: linear-gradient(180deg, #0ea5e9 0%, #06b6d4 60%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* glass card */
+        .glass {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(6px);
+        }
+
+        /* hero masked title */
+        .text-mask {
+            font-weight: 900;
+            text-transform: uppercase;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: cover;
+            letter-spacing: 0.14em;
+        }
+
+        /* animated entrance */
+        @keyframes fadeDown {
+            from {
+                opacity: 0;
+                transform: translateY(-18px);
+            }
+
+            to {
+                opacity: 1;
+                transform: none;
+            }
+        }
+
+        .fade-down {
+            animation: fadeDown .9s ease-out both;
+        }
+
+        /* wave animation */
+        .wave {
+            transform: translateZ(0);
+            opacity: .9;
+        }
+
+        /* episode card hover */
+        .video-card {
+            transition: transform .28s cubic-bezier(.2, .9, .2, 1), box-shadow .28s;
+        }
+
+        .video-card:hover {
+            transform: translateY(-8px) scale(1.01);
+            box-shadow: 0 18px 40px rgba(2, 6, 23, .12);
+        }
+
+        /* sticky floating player */
+        .floating-player {
+            position: fixed;
+            right: 24px;
+            bottom: 24px;
+            width: 360px;
+            max-width: calc(100% - 48px);
+            z-index: 60;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 18px 50px rgba(2, 6, 23, .2);
+            background: linear-gradient(180deg, rgba(255, 255, 255, .03), rgba(255, 255, 255, .02));
+        }
+
+        .fp-mini {
+            display: flex;
+            gap: .75rem;
+            align-items: center;
+            padding: .8rem;
+        }
+
+        .fp-mini img {
+            width: 64px;
+            height: 64px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .fp-controls {
+            display: flex;
+            gap: .5rem;
+            align-items: center;
+        }
+
+        /* responsive tweaks */
+        @media (max-width: 640px) {
+            .text-mask {
+                font-size: 2.8rem;
+            }
+
+            .floating-player {
+                left: 12px;
+                right: 12px;
+                bottom: 12px;
+                width: auto;
+            }
+        }
+
+    
+
+        @keyframes marquee {
+            from {
+                transform: translateX(0);
+            }
+
+            to {
+                transform: translateX(-100%);
+            }
+        }
+
+        .text-mask {
+            font-size: 6rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            background: url('img/baleia4.jpg') no-repeat center center;
+            background-size: cover;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+            letter-spacing: 0.2em;
+        }
+
+        header nav a {
+            color: #000;
+            /* preto */
+            transition: color 0.3s;
+        }
+
+        header nav a:hover {
+            color: #2563eb !important;
+            /* azul Tailwind blue-600 */
+        }
+
+        .floating-player .text-white,
+        .floating-player .text-white\/95,
+        .floating-player .text-white\/70 {
+            color: #000 !important;
+        }
+    </style>
+</head>
+
+<body class="flex flex-col min-h-screen">
+
+    <!-- Topbar -->
+    <header
+        class="bg-white fixed top-4 left-1/2 transform -translate-x-1/2 w-[95%] md:w-[90%] z-50 rounded-lg border border-gray-300 shadow-md">
+        <div class="max-w-7xl mx-auto flex justify-between items-center px-4 md:px-6 py-2">
+            <div class="flex items-center space-x-3">
+                <img src="img/Logo Mista 1.png" alt="Logo" class="h-12 md:h-16" />
+            </div>
+            <nav class="hidden md:flex flex-1 justify-center space-x-10 lg:space-x-16 text-sm lg:text-lg font-semibold uppercase tracking-wide"
+                style="font-family: 'Montserrat', sans-serif;">
+                <a href="index.html" class="text-black hover:text-blue-600">Home</a>
+                <a href="sobre nós.html" class="text-black hover:text-blue-600">Sobre Nós</a>
+                <a href="intenvenções.html" class="text-black hover:text-blue-600">Intervenções</a>
+                <a href="podcast.html" class="text-black hover:text-blue-600">Podcast</a>
+            </nav>
+        </div>
+    </header>
+
+
+    <section class="hero-bg text-white pt-28 pb-16 relative">
+        <div class="absolute inset-0 opacity-30">
+            <!-- VÍDEO DE FUNDO -->
+            <video autoplay muted loop playsinline class="w-full h-full object-cover">
+                <source src="img/12659676-uhd_2560_1440_60fps.mp4" type="video/mp4">
+            </video>
+
+            <!-- GRADIENTE ESCURO -->
+            <div class="absolute inset-0 bg-gradient-to-b from-transparent to-[#06b6d4]/50"></div>
+        </div>
+
+        <div class="relative max-w-6xl mx-auto px-6 text-center">
+            <div class="inline-block bg-white/10 rounded-full px-4 py-1 mb-6 glass">
+                Novo episódio toda semana
+            </div>
+
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold fade-down mb-4"
+                style="-webkit-text-stroke: 0.6px rgba(255, 255, 255, 0.06);">
+                BIP FALA!
+            </h1>
+
+            <p class="max-w-3xl mx-auto text-white/95 mb-6 leading-relaxed">
+                Conversas profundas e reais sobre o oceano, ciência e comunidade. Histórias de resgate, impacto humano e
+                soluções práticas — com convidados que vivem o mar.
+            </p>
+
+            <div class="flex items-center justify-center gap-4">
+                <a id="btn-play-intro" href="#episodios"
+                    class="inline-flex items-center gap-3 bg-white text-teal-600 font-semibold px-6 py-3 rounded-full shadow hover:scale-[1.02] transition">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                        <path d="M5 3v18l15-9L5 3z" fill="currentColor" />
+                    </svg>
+                    Ouvir Episódios
+                </a>
+                <a href="#sobre" class="text-white/90 underline">Saiba mais</a>
+            </div>
+            <br>
+            <section id="sobre" class="py-14 bg-gray-50">
+                <div class="max-w-5xl mx-auto px-6 text-center">
+                    <h2 class="text-3xl font-bold text-teal-800 mb-4">Sobre o BIP Fala</h2>
+                    <p class="text-gray-700 max-w-3xl mx-auto leading-relaxed">
+                        BIP Fala reúne pesquisadores, pescadores, ONGs e comunidade para discutir problemas reais do
+                        litoral e
+                        soluções práticas. Cada episódio traz relatos de campo, dados científicos e conversas acessíveis
+                        para
+                        todos que amam o mar.
+                    </p>
+                </div>
+            </section>
+
+            <!-- EPISÓDIOS (5) -->
+            <section id="episodios" class="py-16 bg-white">
+                <div class="max-w-6xl mx-auto px-6">
+                    <h2 class="text-3xl font-bold text-teal-800 mb-8 text-center">Episódios</h2>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                        <!-- CARD EPISÓDIO 1 -->
+                        <article class="video-card bg-gray-50 rounded-xl overflow-hidden shadow-sm" data-ep="1"
+                            data-src="videos/1.mp4" data-poster="img/Banner 1.png"
+                            data-title="Episódio 1 — BIP Fala, mas fala o quê?"
+                            data-desc="Apresentação do podcast: propósito do Projeto BIP e primeiras histórias do litoral.">
+                            <div class="relative">
+                                <img src="img/Banner 1.png" alt="" class="w-full aspect-square object-cover">
+                                <div class="absolute right-3 bottom-3 bg-white/90 rounded-full p-2">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                                        <path d="M5 3v18l15-9L5 3z" fill="#06b6d4" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="p-4">
+                                <h3 class="text-lg font-semibold text-teal-700">Episódio 1 — BIP Fala, mas fala o quê?
+                                </h3>
+                                <p class="text-gray-600 text-sm mt-1">Apresentação do podcast e missão do Projeto BIP.
+                                </p>
+                                <div class="mt-3 flex items-center justify-between">
+                                    <span class="text-xs text-gray-500">3 min • 03/2025</span>
+                                    <button
+                                        class="btn-open text-sm text-white bg-teal-600 px-3 py-1 rounded">Tocar</button>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- CARD EPISÓDIO 2 -->
+                        <article class="video-card bg-gray-50 rounded-xl overflow-hidden shadow-sm" data-ep="2"
+                            data-src="videos/2.mp4" data-poster="img/Capa 2.png"
+                            data-title="Episódio 2 — Plataformas de Petróleo"
+                            data-desc="Impactos das plataformas no litoral, ruído e medidas de mitigação.">
+                            <div class="relative">
+                                <img src="img/Capa 2.png" alt="" class="w-full aspect-square object-cover">
+                                <div class="absolute right-3 bottom-3 bg-white/90 rounded-full p-2">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                                        <path d="M5 3v18l15-9L5 3z" fill="#06b6d4" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="p-4">
+                                <h3 class="text-lg font-semibold text-teal-700">Episódio 2 — Quem são as toninhas?
+                                </h3>
+                                <p class="text-gray-600 text-sm mt-1">A toninha, ou Pontoporia blainvillei, é uma
+                                    espécie única: é o menor cetáceo encontrado na costa brasileira</p>
+                                <div class="mt-3 flex items-center justify-between">
+                                    <span class="text-xs text-gray-500">3 min • 04/2025</span>
+                                    <button
+                                        class="btn-open text-sm text-white bg-teal-600 px-3 py-1 rounded">Tocar</button>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- CARD EPISÓDIO 3 -->
+                        <article class="video-card bg-gray-50 rounded-xl overflow-hidden shadow-sm" data-ep="3"
+                            data-src="videos/3.mp4" data-poster="img/Capa 3.png"
+                            data-title="Episódio 3 — Ecolocalização"
+                            data-desc="Como golfinhos e baleias usam som; efeitos do ruído humano.">
+                            <div class="relative">
+                                <img src="img/Capa 3.png" alt="" class="w-full aspect-square object-cover">
+                                <div class="absolute right-3 bottom-3 bg-white/90 rounded-full p-2">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                                        <path d="M5 3v18l15-9L5 3z" fill="#06b6d4" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="p-4">
+                                <h3 class="text-lg font-semibold text-teal-700">Episódio 3 — Plataformas de petróleo
+                                </h3>
+                                <p class="text-gray-600 text-sm mt-1"> As plataformas de petróleo são estruturas
+                                    enormes, verdadeiras cidades flutuantes, que servem para extrair o petróleo do fundo
+                                    do mar.
+                                </p>
+                                <div class="mt-3 flex items-center justify-between">
+                                    <span class="text-xs text-gray-500">3 min • 05/2025</span>
+                                    <button
+                                        class="btn-open text-sm text-white bg-teal-600 px-3 py-1 rounded">Tocar</button>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- CARD EPISÓDIO 4 -->
+                        <article class="video-card bg-gray-50 rounded-xl overflow-hidden shadow-sm" data-ep="4"
+                            data-src="videos/ep4.mp4" data-poster="img/podcast4.jpg"
+                            data-title="Episódio 4 — Comunidades & Pesca"
+                            data-desc="Relação entre pescadores e conservação: soluções locais.">
+                            <div class="relative">
+                                <img src="img/Capa 4.png" alt="" class="w-full aspect-square object-cover">
+                                <div class="absolute right-3 bottom-3 bg-white/90 rounded-full p-2">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                                        <path d="M5 3v18l15-9L5 3z" fill="#06b6d4" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="p-4">
+                                <h3 class="text-lg font-semibold text-teal-700">Episódio 4 — Importância da preservação
+                                    ambiental </h3>
+                                <p class="text-gray-600 text-sm mt-1">Os oceanos são essenciais para o equilíbrio
+                                    ecológico do planeta.
+                                </p>
+                                <div class="mt-3 flex items-center justify-between">
+                                    <span class="text-xs text-gray-500">3 min • 06/2025</span>
+                                    <button
+                                        class="btn-open text-sm text-white bg-teal-600 px-3 py-1 rounded">Tocar</button>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- CARD EPISÓDIO 5 -->
+                        <article class="video-card bg-gray-50 rounded-xl overflow-hidden shadow-sm" data-ep="5"
+                            data-src="videos/4.mp4" data-poster="img/Capa 5.png"
+                            data-title="Episódio 5 — Ciência em Ação"
+                            data-desc="Projetos de pesquisa aplicados à conservação e próximos passos.">
+                            <div class="relative">
+                                <img src="img/Capa 5.png" alt="" class="w-full aspect-square object-cover">
+                                <div class="absolute right-3 bottom-3 bg-white/90 rounded-full p-2">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                                        <path d="M5 3v18l15-9L5 3z" fill="#06b6d4" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="p-4">
+                                <h3 class="text-lg font-semibold text-teal-700">Episódio 5 — Ecolocalização</h3>
+                                <p class="text-gray-600 text-sm mt-1"> A ecolocalização é uma forma de percepção sonora.
+                                </p>
+                                <div class="mt-3 flex items-center justify-between">
+                                    <span class="text-xs text-gray-500">3 min • 07/2025</span>
+                                    <button
+                                        class="btn-open text-sm text-white bg-teal-600 px-3 py-1 rounded">Tocar</button>
+                                </div>
+                            </div>
+                        </article>
+
+                    </div>
+
+                    <!-- botão ver todos (pode linkar para feed) -->
+                    <div class="mt-12 text-center">
+                        <a href="#"
+                            class="inline-block bg-teal-600 text-white font-semibold px-8 py-3 rounded-full shadow-md hover:bg-teal-700 transition">Ouça
+                            completo</a>
+                    </div>
+                </div>
+            </section>
+            <section class="py-14 bg-gradient-to-b from-white to-gray-50">
+                <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="p-6 rounded-xl glass text-[#0E143F] bg-white/80">
+                        <h4 class="font-semibold mb-2">Maria — Ubatuba</h4>
+                        <p class="text-sm">"O podcast do BIP trouxe conhecimento para nossa comunidade pesqueira."</p>
+                    </div>
+                    <div class="p-6 rounded-xl glass text-[#0E143F] bg-white/80">
+                        <h4 class="font-semibold mb-2">Rafael — Itanhaém</h4>
+                        <p class="text-sm">"As conversas com cientistas mudaram nossa visão sobre o ruído das
+                            plataformas."</p>
+                    </div>
+                    <div class="p-6 rounded-xl glass text-[#0E143F] bg-white/80">
+                        <h4 class="font-semibold mb-2">Larissa — Recife</h4>
+                        <p class="text-sm">"Conteúdo prático e inspirador para quem ama o mar."</p>
+                    </div>
+                </div>
+            </section>
+
+            <footer class="bg-[#0E143F] text-gray-200 py-12 px-6 mt-auto">
+                <div class="mt-12 text-center">
+                    <h1 class="text-mask text-6xl font-extrabold tracking-widest"> PROJETO BIP </h1>
+                </div>
+                <div class="text-center text-gray-400 mt-8 text-sm"> © 2024 PROJETO BIP. Todos os direitos reservados. |
+                    Termos
+                    de Uso </div>
+            </footer>
+            <div vw class="enabled">
+                <div vw-access-button class="active"></div>
+                <div vw-plugin-wrapper>
+                    <div class="vw-plugin-top-wrapper"></div>
+                </div>
+            </div>
+
+            <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+            <script>
+                new window.VLibras.Widget('https://vlibras.gov.br/app');
+            </script>
+
+            <div id="floatingPlayer" class="floating-player hidden">
+                <div class="fp-mini">
+                    <img id="fpPoster" src="img/podcast1.jpg" alt="poster">
+                    <div style="flex:1">
+                        <div id="fpTitle" class="text-sm font-semibold text-white/95">Episódio</div>
+                        <div id="fpDesc" class="text-xs text-white/70">Descrição curta</div>
+                    </div>
+                    <div class="fp-controls">
+                        <button id="fpToggle" title="Play/Pause" class="p-2 rounded-full bg-white/6 hover:bg-white/10">
+                            <svg id="fpIconPlay" width="18" height="18" viewBox="0 0 24 24" fill="none">
+                                <path d="M5 3v18l15-9L5 3z" fill="#fff" />
+                            </svg>
+                            <svg id="fpIconPause" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                style="display:none">
+                                <path d="M6 5h4v14H6zM14 5h4v14h-4z" fill="#fff" />
+                            </svg>
+                        </button>
+                        <button id="fpClose" title="Fechar" class="p-2 rounded-full bg-white/6 hover:bg-white/10 ml-1">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                                <path d="M6 6l12 12M6 18L18 6" stroke="#fff" stroke-width="2" stroke-linecap="round" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <video id="fpVideo" controls preload="metadata"
+                    style="width:100%; height:190px; background:#000; display:block;">
+                    <source src="" type="video/mp4">
+                    Seu navegador não suporta vídeo.
+                </video>
+            </div>
+            <script>
+                const cards = document.querySelectorAll('.video-card');
+                const floating = document.getElementById('floatingPlayer');
+                const fpVideo = document.getElementById('fpVideo');
+                const fpPoster = document.getElementById('fpPoster');
+                const fpTitle = document.getElementById('fpTitle');
+                const fpDesc = document.getElementById('fpDesc');
+                const fpToggle = document.getElementById('fpToggle');
+                const fpIconPlay = document.getElementById('fpIconPlay');
+                const fpIconPause = document.getElementById('fpIconPause');
+                const fpClose = document.getElementById('fpClose');
+
+                function openFloating(src, poster, title, desc) {
+                    floating.classList.remove('hidden');
+                    // troca source
+                    fpVideo.pause();
+                    fpVideo.querySelector('source').src = src;
+                    fpVideo.load();
+                    fpVideo.play().catch(() => { });
+                    fpPoster.src = poster;
+                    fpTitle.textContent = title;
+                    fpDesc.textContent = desc;
+                    fpIconPlay.style.display = 'none';
+                    fpIconPause.style.display = '';
+                }
+                fpToggle.addEventListener('click', () => {
+                    if (fpVideo.paused) { fpVideo.play(); fpIconPlay.style.display = 'none'; fpIconPause.style.display = ''; }
+                    else { fpVideo.pause(); fpIconPlay.style.display = ''; fpIconPause.style.display = 'none'; }
+                });
+                fpVideo.addEventListener('play', () => { fpIconPlay.style.display = 'none'; fpIconPause.style.display = ''; });
+                fpVideo.addEventListener('pause', () => { fpIconPlay.style.display = ''; fpIconPause.style.display = 'none'; });
+
+                fpClose.addEventListener('click', () => {
+                    fpVideo.pause();
+                    floating.classList.add('hidden');
+                });
+
+                cards.forEach(card => {
+                    const btn = card.querySelector('.btn-open');
+                    const src = card.dataset.src;
+                    const poster = card.dataset.poster;
+                    const title = card.dataset.title;
+                    const desc = card.dataset.desc;
+                    card.addEventListener('click', (e) => {
+                        if (e.target.closest('.btn-open')) {
+                            openFloating(src, poster, title, desc);
+                        } else {
+                            openFloating(src, poster, title, desc);
+                        }
+                    });
+                    if (btn) {
+                        btn.addEventListener('click', (ev) => {
+                            ev.stopPropagation();
+                            openFloating(src, poster, title, desc);
+                        });
+                    }
+                });
+
+                document.getElementById('btn-play-intro')?.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    document.getElementById('episodios').scrollIntoView({ behavior: 'smooth' });
+                });
+
+
+                document.addEventListener('visibilitychange', () => {
+                    if (document.hidden) fpVideo.pause();
+                });
+
+            </script>
+</body>
+
+</html>

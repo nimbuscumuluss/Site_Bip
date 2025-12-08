@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>intervenção</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@600&display=swap"
+        rel="stylesheet">
+    <link rel="icon" type="image/png" href="img/favicon.ico">
+    <style>
+        .hero-bg {
+            background:
+                linear-gradient(180deg, rgba(14, 165, 233, 0.7), rgba(6, 182, 212, 0.7)),
+                url('img/baleia2.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(6px);
+        }
+
+        .card-img {
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .text-mask {
+            font-size: 6rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            background: url('img/baleia4.jpg') no-repeat center center;
+            background-size: cover;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+            letter-spacing: 0.2em;
+        }
+
+        /* Animação do título Hero */
+        @keyframes fadeDown {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-down {
+            animation: fadeDown 1s ease-out forwards;
+        }
+
+        @keyframes fadeInLetters {
+            0% {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .text-mask span {
+            display: inline-block;
+            opacity: 0;
+            animation: fadeInLetters 0.6s forwards;
+        }
+
+
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+
+<body class="bg-white text-gray-800 font-sans flex flex-col min-h-screen">
+    <!-- Topbar -->
+    <header
+        class="bg-white fixed top-4 left-1/2 transform -translate-x-1/2 w-[95%] md:w-[90%] z-50 rounded-lg border border-gray-300 shadow-md">
+        <div class="max-w-7xl mx-auto flex justify-between items-center px-4 md:px-6 py-2">
+            <div class="flex items-center space-x-3">
+                <img src="img/Logo Mista 1.png" alt="Logo" class="h-12 md:h-16" />
+            </div>
+            <nav class="hidden md:flex flex-1 justify-center space-x-10 lg:space-x-16 text-sm lg:text-lg font-semibold uppercase tracking-wide"
+                style="font-family: 'Montserrat', sans-serif;">
+                <a href="index.html" class="text-black hover:text-blue-600">Home</a>
+                <a href="sobre nós.html" class="text-black hover:text-blue-600">Sobre Nós</a>
+                <a href="intenvenções.html" class="text-black hover:text-blue-600">Intervenções</a>
+                <a href="podcast.html" class="text-black hover:text-blue-600">Podcast</a>
+            </nav>
+        </div>
+    </header>
+
+    <header class="hero-bg text-white">
+        <div class="max-w-6xl mx-auto px-6 py-20 lg:py-28 text-center">
+            <div class="inline-block bg-white/10 rounded-full px-4 py-2 mb-6">Cuidando da vida marinha</div>
+            <h1 class="text-4xl lg:text-6xl font-extrabold leading-tight mb-4 fade-down">Nossos Princípios</h1>
+            <p class="max-w-2xl mx-auto opacity-90 mb-8">Proteção, responsabilidade e amor pela biodiversidade. O
+                Projeto BIP atua em parceria com comunidades e indústrias para garantir um oceano vivo e equilibrado.
+            </p>
+            <a href="#intervencoes"
+                class="inline-block bg-white text-teal-600 font-semibold px-6 py-3 rounded-full shadow-md">
+                Saiba Mais
+            </a>
+
+            <div class="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+                <div class="flex flex-col items-center">
+                    <div class="w-16 h-16 flex items-center justify-center rounded-lg bg-white/15 mb-3">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 2v6l4 2">
+                            </path>
+                        </svg>
+                    </div>
+                    <div class="text-sm">Monitoramento constante</div>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="w-16 h-16 flex items-center justify-center rounded-lg bg-white/15 mb-3">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="3" stroke-width="1.5" />
+                        </svg>
+                    </div>
+                    <div class="text-sm">Responsabilidade ambiental</div>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="w-16 h-16 flex items-center justify-center rounded-lg bg-white/15 mb-3">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path d="M3 7h18M3 12h18M3 17h18" stroke-width="1.5" />
+                        </svg>
+                    </div>
+                    <div class="text-sm">Educação e pesquisa</div>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="w-16 h-16 flex items-center justify-center rounded-lg bg-white/15 mb-3">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 20l9-5-9-5-9 5 9 5z" stroke-width="1.5" />
+                        </svg>
+                    </div>
+                    <div class="text-sm">Consciência ecológica</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="intervencoes" class="py-16 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="text-3xl font-bold text-teal-800 mb-12 text-center">Nossas Intervenções</h2>
+
+            <!-- Resgate e Monitoramento -->
+            <div class="mb-16 md:flex md:items-center md:gap-8">
+                <div class="md:w-1/2 mb-6 md:mb-0">
+                    <img src="img/i1.png" alt="Resgate de animais marinhos" class="rounded-xl shadow-md w-full">
+                </div>
+                <div class="md:w-1/2">
+                    <h3 class="text-2xl font-semibold mb-4 text-teal-700">Resgate e Monitoramento</h3>
+                    <p class="text-gray-700 mb-4">
+                        <b>Nossas equipes especializadas atuam em Ubatuba e Itanhaém, bem como em outras regiões do
+                            litoral brasileiro,</b>
+                        realizando o resgate de tartarugas, golfinhos, aves marinhas e peixes em risco. Cada
+                        intervenção é cuidadosamente
+                        planejada para garantir a segurança dos animais e <b>reduzir impactos das atividades humanas
+                        próximas às plataformas de petróleo.</b>
+                    </p>
+                    <ul class="list-disc list-inside text-gray-700 mb-4">
+                        <li>Monitoramento constante de áreas de risco;</li>
+                        <li>Uso de tecnologias de rastreamento e drones para identificar animais em perigo;</li>
+                        <li>Parcerias com pesquisadores locais e universidades;</li>
+                        <li>Programas de reabilitação e soltura dos animais.</li>
+                    </ul>
+                    <p class="text-gray-700">O objetivo é preservar a biodiversidade marinha, prevenindo acidentes e
+                        garantindo que cada espécie possa retornar ao seu habitat natural com segurança.</p>
+                </div>
+            </div>
+
+            <!-- Educação Ambiental -->
+            <div class="mb-16 md:flex md:items-center md:gap-8 md:flex-row-reverse">
+                <div class="md:w-1/2 mb-6 md:mb-0">
+                    <img src="img/i2.jpeg" alt="Educação ambiental" class="rounded-xl shadow-md w-full">
+                </div>
+                <div class="md:w-1/2">
+                    <h3 class="text-2xl font-semibold mb-4 text-teal-700">Educação Ambiental</h3>
+                    <p class="text-gray-700 mb-4">
+                        <b>Educar é transformar. O BIP promove oficinas, palestras e atividades práticas em escolas,
+                        comunidades costeiras</b>
+                        e eventos ambientais em todo o Brasil. Nosso foco é ensinar sobre a importância do oceano e
+                        como pequenas ações
+                        podem gerar grandes mudanças.
+                    </p>
+                    <ul class="list-disc list-inside text-gray-700 mb-4">
+                        <li>Oficinas de conscientização para crianças e adolescentes;</li>
+                        <li>Capacitação de pescadores e comunidades locais para práticas sustentáveis;</li>
+                        <li>Campanhas de limpeza e proteção de praias e manguezais;</li>
+                        <li>Distribuição de materiais educativos e recursos digitais.</li>
+                    </ul>
+                    <p class="text-gray-700">Com educação, fortalecemos a conexão da sociedade com a vida marinha e
+                        incentivamos a proteção ambiental em nível comunitário e nacional.</p>
+                </div>
+            </div>
+
+            <!-- Pesquisas Científicas -->
+            <div class="mb-16 md:flex md:items-center md:gap-8">
+                <div class="md:w-1/2 mb-6 md:mb-0">
+                    <img src="img/i1 (1).png" alt="Pesquisa científica marinha" class="rounded-xl shadow-md w-full">
+                </div>
+                <div class="md:w-1/2">
+                    <h3 class="text-2xl font-semibold mb-4 text-teal-700">Pesquisas Científicas</h3>
+                    <p class="text-gray-700 mb-4">
+                        A ciência guia nossas decisões. <b>O Projeto BIP realiza estudos detalhados sobre o
+                        comportamento, migração e saúde</b>
+                        de espécies marinhas, além de avaliar impactos ambientais de plataformas de petróleo. Essas
+                        pesquisas fortalecem
+                        políticas públicas e programas de conservação.
+                    </p>
+                    <ul class="list-disc list-inside text-gray-700 mb-4">
+                        <li>Coletas de dados sobre biodiversidade e habitats marinhos;</li>
+                        <li>Análise de impactos das atividades humanas e poluição;</li>
+                        <li>Publicação de relatórios científicos e parcerias com universidades;</li>
+                        <li>Desenvolvimento de protocolos de resgate e manejo sustentável.</li>
+                    </ul>
+                    <p class="text-gray-700">Nosso objetivo é garantir que as decisões de conservação sejam baseadas
+                        em evidências sólidas, fortalecendo a proteção de oceanos e suas espécies em todo o Brasil.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Conclusão -->
+            <div class="text-center mt-12">
+                <p class="text-gray-700 text-lg">
+                    Cada intervenção do BIP é um passo para um oceano mais seguro e saudável. Com resgates, educação
+                    e ciência, conectamos comunidades, indústria e natureza em prol da vida marinha.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Depoimentos -->
+    <section class="relative py-16">
+        <div class="absolute inset-0">
+            <img src="img/WhatsApp Image 2025-09-22 at 22.55.58.jpeg" alt="praia"
+                class="w-full h-full object-cover opacity-90">
+            <div class="absolute inset-0 bg-gradient-to-b from-transparent to-white/90"></div>
+        </div>
+        <div class="relative max-w-6xl mx-auto px-6">
+            <h2 class="text-3xl font-bold text-white mb-8 text-center">Depoimentos</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="p-6 rounded-xl glass text-white">
+                    <h4 class="font-semibold mb-2">Maria - Ubatuba/SP</h4>
+                    <p class="text-sm">"O BIP mudou a forma como vejo o oceano. Graças às ações de conscientização,
+                        minha comunidade hoje valoriza ainda mais a vida marinha."</p>
+                </div>
+                <div class="p-6 rounded-xl glass text-white">
+                    <h4 class="font-semibold mb-2">Rafael - Itanhaém/SP</h4>
+                    <p class="text-sm">"Participei de um resgate de tartarugas com o BIP e foi uma das experiências
+                        mais transformadoras da minha vida."</p>
+                </div>
+                <div class="p-6 rounded-xl glass text-white">
+                    <h4 class="font-semibold mb-2">Larissa - Recife/PE</h4>
+                    <p class="text-sm">"O trabalho do BIP no Nordeste é inspirador. Educação e ciência andando lado
+                        a lado pela preservação."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#0E143F] text-gray-200 py-12 px-6 mt-auto">
+        <div class="mt-12 text-center">
+            <h1 class="text-mask text-6xl font-extrabold tracking-widest"> PROJETO BIP </h1>
+        </div>
+        <div class="text-center text-gray-400 mt-8 text-sm"> © 2024 PROJETO BIP. Todos os direitos reservados. | Termos
+            de Uso </div>
+    </footer>
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
+
+</html>

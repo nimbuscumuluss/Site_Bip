@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projeto BIP</title>
+
+    <!-- Bootstrap e Tailwind -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@600&display=swap"
+        rel="stylesheet">
+    <link rel="icon" type="image/png" href="img/favicon.ico">
+    <style>
+        body {
+            font-family: Arial, sans-serif !important;
+            background: #000;
+            color: #fff;
+            text-align: left !important;
+        }
+
+        .hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            overflow: hidden;
+            padding-left: 5%;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(4, 91, 91, 0.6);
+            z-index: 1;
+        }
+
+        .hero img,
+        .hero video {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .hero-text {
+            max-width: 700px;
+            font-family: Arial, sans-serif !important;
+            text-align: left !important;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+            text-transform: uppercase;
+        }
+
+        .hero-text h1 .yellow {
+            color: #3693BA;
+        }
+
+        .hero-text h1 .italic {
+            font-style: arial;
+            color: #3693BA;
+        }
+
+        .btn-custom {
+            margin-top: 2rem;
+            display: inline-block;
+            padding: 12px 28px;
+            border: 1px solid #fff;
+            border-radius: 30px;
+            text-decoration: none;
+            color: #fff;
+            font-size: 0.95rem;
+            transition: 0.3s;
+        }
+
+        .btn-custom:hover {
+            background: #3693BA;
+            color: #000;
+        }
+
+        /* Card transparente expansivo */
+        .hero-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 1.5rem;
+            border-radius: 1rem;
+            min-width: 250px;
+            max-width: 400px;
+            flex: 1;
+            transition: all 0.3s ease-in-out;
+            font-family: Arial, sans-serif;
+            opacity: 0;
+            /* começa invisível para animação */
+        }
+
+        .hero-card:hover {
+            transform: scale(1.05);
+        }
+
+        section h2,
+        section h3,
+        section p {
+            text-align: left !important;
+            font-family: Arial, sans-serif !important;
+        }
+
+        footer h3,
+        footer p,
+        footer a {
+            text-align: left !important;
+            font-family: Arial, sans-serif !important;
+        }
+
+        .text-mask {
+            font-size: 6rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            background: url('img/baleia4.jpg') no-repeat center center;
+            background-size: cover;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+            letter-spacing: 0.2em;
+        }
+
+        @media (max-width: 768px) {
+            .text-mask {
+                font-size: 2.5rem;
+                letter-spacing: 0.1em;
+            }
+        }
+
+        #modalForm input,
+        #modalForm select,
+        #modalForm textarea {
+            color: #000 !important;
+            background-color: #fff !important;
+        }
+
+        header nav a {
+            color: #000;
+            /* preto */
+            transition: color 0.3s;
+        }
+
+        header nav a:hover {
+            color: #2563eb !important;
+            /* azul Tailwind blue-600 */
+        }
+    </style>
+</head>
+
+<body class="flex flex-col min-h-screen">
+
+    <!-- Topbar -->
+    <header
+        class="bg-white fixed top-4 left-1/2 transform -translate-x-1/2 w-[95%] md:w-[90%] z-50 rounded-lg border border-gray-300 shadow-md">
+        <div class="max-w-7xl mx-auto flex justify-between items-center px-4 md:px-6 py-2">
+            <div class="flex items-center space-x-3">
+                <img src="img/Logo Mista 1.png" alt="Logo" class="h-12 md:h-16" />
+            </div>
+            <nav class="hidden md:flex flex-1 justify-center space-x-10 lg:space-x-16 text-sm lg:text-lg font-semibold uppercase tracking-wide"
+                style="font-family: 'Montserrat', sans-serif;">
+                <a href="index.html" class="text-black hover:text-blue-600">Home</a>
+                <a href="sobre nós.html" class="text-black hover:text-blue-600">Sobre Nós</a>
+                <a href="intenvenções.html" class="text-black hover:text-blue-600">Intervenções</a>
+                <a href="podcast.html" class="text-black hover:text-blue-600">Podcast</a>
+            </nav>
+        </div>
+    </header>
+
+
+    <section class="hero relative">
+        <img src="img/golfinho.jpg" alt="golfinho" class="w-full h-screen object-cover">
+        <div class="absolute inset-0 bg-black/50"></div>
+
+        <div class="hero-content relative z-10 flex flex-col md:flex-row justify-between items-start px-6 md:px-12">
+            <!-- Texto à esquerda -->
+            <div class="hero-text max-w-xl">
+                <h1>
+                    <span class="yellow">BIP</span> FAZENDO A<br>
+                    BIODIVERSIDADE <br>
+                    <span class="italic">ACONTECER</span>
+                </h1>
+                <p class="mt-6 text-lg text-gray-300">
+                    Junte-se ao BIP e ajude a proteger a biodiversidade nas plataformas, sua ação faz toda a diferença!
+                </p>
+                <!-- BOTÃO ATUALIZADO -->
+                <a href="javascript:void(0)" onclick="document.getElementById('modalForm').classList.remove('hidden')"
+                    class="btn-custom mt-4">
+                    SE INSCREVA!
+                </a>
+            </div>
+
+            <!-- Card transparente expansivo à direita -->
+            <div class="hero-card mt-8 md:mt-0 md:ml-8">
+                <h3 class="text-2xl font-bold mb-3" style="color: #3693BA;">QUEM SOMOS NÓS</h3>
+                <p class="text-gray-200">
+                    O BIP (Biodiversidade nas Plataformas) é uma ONG dedicada a proteger e valorizar a biodiversidade em
+                    ambientes digitais e físicos. Com projetos inovadores e ações colaborativas, buscamos conscientizar,
+                    educar e engajar pessoas para que juntos possamos cuidar do nosso planeta de forma prática e
+                    inspiradora.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal (inicialmente oculto) -->
+    <div id="modalForm" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-3xl w-full mx-6 p-8 relative overflow-y-auto max-h-[90vh]">
+
+            <!-- Botão Fechar -->
+            <button onclick="document.getElementById('modalForm').classList.add('hidden')"
+                class="absolute top-4 right-4 text-gray-500 hover:text-gray-800">
+                ✕
+            </button>
+
+            <!-- Título -->
+            <h2 class="text-2xl font-bold text-center mb-8" style="font-family: 'Montserrat', sans-serif;">
+                Candidate-se para fazer parte da ONG
+            </h2>
+
+            <!-- Formulário -->
+            <form class="space-y-6">
+                <!-- Nome e Email -->
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block mb-2 font-semibold text-gray-700">Nome Completo</label>
+                        <input type="text"
+                            class="w-full p-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+                            placeholder="Digite seu nome" required>
+                    </div>
+                    <div>
+                        <label class="block mb-2 font-semibold text-gray-700">E-mail</label>
+                        <input type="email"
+                            class="w-full p-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+                            placeholder="seuemail@exemplo.com" required>
+                    </div>
+                </div>
+
+                <!-- Telefone e Área -->
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block mb-2 font-semibold text-gray-700">Telefone</label>
+                        <input type="tel"
+                            class="w-full p-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+                            placeholder="(xx) xxxxx-xxxx" required>
+                    </div>
+                    <div>
+                        <label class="block mb-2 font-semibold text-gray-700">Área de Interesse</label>
+                        <select
+                            class="w-full p-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+                            required>
+                            <option value="">Selecione</option>
+                            <option>Educação Ambiental</option>
+                            <option>Comunicação e Marketing</option>
+                            <option>Pesquisa Científica</option>
+                            <option>Administração</option>
+                            <option>Outros</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Mensagem -->
+                <div>
+                    <label class="block mb-2 font-semibold text-gray-700">Mensagem</label>
+                    <textarea rows="5"
+                        class="w-full p-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+                        placeholder="Fale um pouco sobre você..." required></textarea>
+                </div>
+
+                <!-- Upload -->
+                <div>
+                    <label class="block mb-2 font-semibold text-gray-700">Anexar Currículo</label>
+                    <input type="file"
+                        class="w-full p-3 rounded-xl border border-gray-300 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-blue-600 file:text-white hover:file:bg-blue-700 transition"
+                        required>
+                </div>
+
+                <!-- Botão -->
+                <div class="text-center">
+                    <button type="submit"
+                        class="px-8 py-3 rounded-xl font-semibold text-white bg-blue-600 hover:bg-blue-700 shadow-md transition">
+                        Enviar Candidatura
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Destaque -->
+    <section class="py-20 bg-black">
+        <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12">
+            <div>
+                <h2 class="text-5xl font-bold mb-6"><span class="yellow">+5000</span></h2>
+                <p class="text-gray-300">Pessoas alcançadas por nossas ações de educação ambiental.</p>
+            </div>
+            <div class="bg-gray-900 p-8 rounded-xl shadow-lg">
+                <h3 class="text-xl font-semibold mb-4">Pesquisa e Conservação</h3>
+                <p class="text-gray-400">Promovemos estudos contínuos para proteger a biodiversidade e divulgar seu
+                    valor.</p>
+            </div>
+        </div>
+    </section> <!-- Missão -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-6xl mx-auto text-center px-6">
+            <h2 class="text-4xl font-bold mb-4 text-[#0E143F] text-center">Nossa Missão</h2>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto"> Conscientizar, educar e agir para proteger os
+                ecossistemas marinhos. Trabalhamos para reduzir os impactos das atividades humanas sobre os oceanos e
+                apoiar comunidades costeiras em iniciativas de preservação. </p>
+        </div>
+    </section> <!-- Valores -->
+    <section class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-12 text-center">
+            <div class="p-6 rounded-2xl shadow bg-gray-50 hover:shadow-lg transition">
+                <h3 class="text-xl font-semibold mb-3 text-[#0E143F] text-center">Educação</h3>
+                <p class="text-gray-600">Acreditamos que o conhecimento transforma. Nossos programas educativos inspiram
+                    crianças e adultos a cuidar do oceano.</p>
+            </div>
+            <div class="p-6 rounded-2xl shadow bg-gray-50 hover:shadow-lg transition">
+                <h3 class="text-xl font-semibold mb-3 text-[#0E143F] text-center">Ação</h3>
+                <p class="text-gray-600">Não ficamos só no discurso. Organizamos limpezas de praias, resgates e
+                    monitoramento de espécies marinhas.</p>
+            </div>
+            <div class="p-6 rounded-2xl shadow bg-gray-50 hover:shadow-lg transition">
+                <h3 class="text-xl font-semibold mb-3 text-[#0E143F] text-center">Colaboração</h3>
+                <p class="text-gray-600">Unimos forças com outras instituições e comunidades para multiplicar o impacto
+                    positivo.</p>
+            </div>
+        </div>
+    </section> <!-- Equipe -->
+    <section class="py-20 bg-gray-900 text-gray-200">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+            <h2 class="text-4xl font-bold mb-12 text-white text-center">Nossa Equipe</h2>
+            <div class="grid md:grid-cols-3 gap-12">
+                <div class="bg-gray-800 rounded-xl shadow p-6"> <img src="img/3.JPG" alt="Membro"
+                        class="rounded-full w-32 h-32 mx-auto mb-4 object-cover">
+                    <h3 class="text-xl font-semibold">João Matos</h3>
+                    <p class="text-sm text-gray-400">Biólogo Marinho</p>
+                </div>
+                <div class="bg-gray-800 rounded-xl shadow p-6"> <img src="img/1.jpeg" alt="Membro"
+                        class="rounded-full w-32 h-32 mx-auto mb-4 object-cover">
+                    <h3 class="text-xl font-semibold">Hemilly Lourenço</h3>
+                    <p class="text-sm text-gray-400">Profissional de relações públicas</p>
+                </div>
+                <div class="bg-gray-800 rounded-xl shadow p-6"> <img src="img/pexels-moose-photos-170195-1036623.jpg"
+                        alt="Membro" class="rounded-full w-32 h-32 mx-auto mb-4 object-cover">
+                    <h3 class="text-xl font-semibold">Ana Paula Mendes</h3>
+                    <p class="text-sm text-gray-400">Coordenadora de Projetos</p>
+                </div>
+            </div>
+        </div>
+    </section> <!-- Impacto -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+            <h2 class="text-4xl font-bold mb-4 text-[#0E143F] text-center">Nosso Impacto</h2>
+            <br>
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="p-6 bg-white rounded-xl shadow">
+                    <h3 class="text-3xl font-bold text-blue-600">+200</h3>
+                    <p class="text-gray-600">Praias limpas</p>
+                </div>
+                <div class="p-6 bg-white rounded-xl shadow">
+                    <h3 class="text-3xl font-bold text-blue-600">+5000</h3>
+                    <p class="text-gray-600">Crianças Educadas</p>
+                </div>
+                <div class="p-6 bg-white rounded-xl shadow">
+                    <h3 class="text-3xl font-bold text-blue-600">+150</h3>
+                    <p class="text-gray-600">Espécies monitoradas</p>
+                </div>
+                <div class="p-6 bg-white rounded-xl shadow">
+                    <h3 class="text-3xl font-bold text-blue-600">+50</h3>
+                    <p class="text-gray-600">Parcerias institucionais</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer class="bg-[#0E143F] text-gray-200 py-12 px-6 mt-auto">
+        <div class="mt-12 text-center">
+            <h1 class="text-mask text-6xl font-extrabold tracking-widest"> PROJETO BIP </h1>
+        </div>
+        <div class="text-center text-gray-400 mt-8 text-sm"> © 2024 PROJETO BIP. Todos os direitos reservados. | Termos
+            de Uso </div>
+    </footer>
+    <script>
+        // Animações GSAP
+        gsap.from(".hero-text h1", { y: 50, opacity: 0, duration: 1, delay: 0.3 });
+        gsap.from(".hero-text p", { y: 30, opacity: 0, duration: 1, delay: 0.6 });
+        gsap.to(".hero-card", { opacity: 1, y: 0, duration: 1, delay: 0.9 });
+    </script>
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
+</body>
+
+</html>

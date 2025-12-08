@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projeto BIP</title>
+
+    <!-- Bootstrap e Tailwind -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <link rel="icon" type="image/png" href="img/favicon.ico">
+
+    <!-- Fontes -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@600&display=swap"
+        rel="stylesheet">
+
+    <style>
+        .slideshow {
+            position: relative;
+            max-width: 95%;
+            margin: 6rem auto 2rem auto;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .slides {
+            display: flex;
+            width: 100%;
+            animation: slide 15s infinite;
+        }
+
+        .slides img {
+            width: 100%;
+            flex-shrink: 0;
+            object-fit: cover;
+            height: 65vh;
+        }
+
+        @media (max-width: 768px) {
+            .slides img {
+                height: 40vh;
+            }
+        }
+
+        @keyframes slide {
+
+            0%,
+            24% {
+                transform: translateX(0);
+            }
+
+            25%,
+            49% {
+                transform: translateX(-100%);
+            }
+
+            50%,
+            74% {
+                transform: translateX(-200%);
+            }
+
+            75%,
+            99% {
+                transform: translateX(-300%);
+            }
+
+            100% {
+                transform: translateX(0);
+            }
+
+        }
+
+        .text-mask {
+            font-size: 6rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            background: url('img/baleia4.jpg') no-repeat center center;
+            background-size: cover;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+            letter-spacing: 0.2em;
+        }
+
+        @media (max-width: 768px) {
+            .text-mask {
+                font-size: 2.5rem;
+                letter-spacing: 0.1em;
+            }
+        }
+
+        header nav a {
+            color: #000;
+            /* preto */
+            transition: color 0.3s;
+        }
+
+        header nav a:hover {
+            color: #2563eb !important;
+            /* azul Tailwind blue-600 */
+        }
+    </style>
+    </style>
+</head>
+
+<body class="bg-white text-gray-800 font-sans flex flex-col min-h-screen">
+    <!-- Topbar -->
+    <header
+        class="bg-white fixed top-4 left-1/2 transform -translate-x-1/2 w-[95%] md:w-[90%] z-50 rounded-lg border border-gray-300 shadow-md">
+        <div class="max-w-7xl mx-auto flex justify-between items-center px-4 md:px-6 py-2">
+            <div class="flex items-center space-x-3">
+                <img src="img/Logo Mista 1.png" alt="Logo" class="h-12 md:h-16" />
+            </div>
+            <nav class="hidden md:flex flex-1 justify-center space-x-10 lg:space-x-16 text-sm lg:text-lg font-semibold uppercase tracking-wide"
+                style="font-family: 'Montserrat', sans-serif;">
+                <a href="index.html" class="text-black hover:text-blue-600">Home</a>
+                <a href="sobre nós.html" class="text-black hover:text-blue-600">Sobre Nós</a>
+                <a href="intenvenções.html" class="text-black hover:text-blue-600">Intervenções</a>
+                <a href="podcast.html" class="text-black hover:text-blue-600">Podcast</a>
+            </nav>
+        </div>
+    </header>
+
+    <!--Video -->
+    <section class="relative h-screen flex items-center justify-center pt-48 text-center">
+        <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover z-0">
+            <source src="#" type="video/mp4">
+        </video>
+        <div class="relative z-10 max-w-3xl px-4 text-white" style="font-family: 'Montserrat', sans-serif;">
+            <h1 class="text-3xl md:text-5xl font-bold mb-6 leading-snug">
+                Proteger a vida marinha perto de plataformas de petróleo é preservar o equilíbrio dos oceanos e o
+                futuro.
+            </h1>
+            <p class="mb-8 text-base md:text-xl">
+                "Assinar petições ajuda a proteger a vida marinha, pressionando por ações contra vazamentos, poluição e
+                destruição de habitats."
+            </p>
+            <a href="https://www.greenpeace.org/brasil/apoie/parem-a-mineracao-em-aguas-profundas/?utm_source=chatgpt.com"
+                class="inline-block bg-[#0E143F] text-white px-6 py-3 md:px-8 md:py-4 rounded-full font-bold text-base md:text-lg">
+                Assine petições
+            </a>
+        </div>
+    </section>
+
+    <!-- carrosel -->
+    <section>
+        <div class="slideshow">
+            <div class="slides">
+                <img src="img/Quick Facts (Informativo).png" alt="Imagem 1">
+                <img src="img/Adote já (Promocional).png" alt="Imagem 2">
+                <img src="img/Quem somos nós (Institucional) (1).png" alt="Imagem 3">
+                <img src="img/AGORA TAMBÉM COM (1).png" alt="Imagem 4">
+            </div>
+        </div>
+    </section>
+
+    <!-- Doações -->
+    <div
+        class="fixed bottom-4 right-4 bg-gray-900 text-white rounded-lg shadow-lg flex items-center space-x-4 p-3 md:p-4 z-50">
+        <img src="img/icone.avif" alt="Doador" class="w-8 h-8 md:w-10 md:h-10 rounded-full" />
+        <div>
+            <p id="nome-doador" class="font-semibold text-sm md:text-base">Ronaldo Balestero Junior</p>
+            <p id="valor-doacao" class="text-xs md:text-sm text-green-400">Doou R$720,00</p>
+        </div>
+        <button class="bg-white text-black px-2 md:px-3 py-1 rounded font-semibold text-xs md:text-sm">Doe
+            Também</button>
+    </div>
+
+    <!-- Programas -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center px-6">
+            <!-- Texto e Programas -->
+            <div>
+                <h1 class="text-3xl md:text-4xl font-bold mb-4">PROGRAMAS EDUCATIVOS</h1>
+                <p class="text-gray-600 mb-8 text-sm md:text-base">
+                    Inspire a curiosidade das crianças! Nossos programas conectam os pequenos com a vida marinha e a
+                    preservação
+                    ambiental, de forma lúdica e divertida.
+                </p>
+
+                <div class="space-y-6">
+                    <div class="bg-white p-5 rounded-2xl shadow hover:shadow-lg transition">
+                        <h2 class="text-base md:text-lg font-semibold">Pequenos Exploradores</h2>
+                        <p class="text-xs md:text-sm text-gray-500">Jardins sensoriais e oficinas</p>
+                        <p class="mt-2 text-gray-700 text-sm">
+                            Crianças menores de 4 anos aprendem sobre a vida marinha através de experiências sensoriais,
+                            jogos educativos e oficinas criativas.
+                        </p>
+                    </div>
+                    <div class="bg-white p-5 rounded-2xl shadow hover:shadow-lg transition">
+                        <h2 class="text-base md:text-lg font-semibold">Laboratório Marinho</h2>
+                        <p class="text-xs md:text-sm text-gray-500">Ciência e exploração</p>
+                        <p class="mt-2 text-gray-700 text-sm">
+                            Experimentos e jogos de observação que despertam a curiosidade científica e o cuidado com os
+                            ecossistemas marinhos.
+                        </p>
+                    </div>
+                    <div class="bg-white p-5 rounded-2xl shadow hover:shadow-lg transition">
+                        <h2 class="text-base md:text-lg font-semibold">Aventuras no Arboreto</h2>
+                        <p class="text-xs md:text-sm text-gray-500">Trilhas educativas</p>
+                        <p class="mt-2 text-gray-700 text-sm">
+                            Explore nosso arboreto e descubra espécies de plantas que ajudam a manter os oceanos
+                            saudáveis.
+                        </p>
+                    </div>
+                    <div class="bg-white p-5 rounded-2xl shadow hover:shadow-lg transition">
+                        <h2 class="text-base md:text-lg font-semibold">Parceiros Institucionais</h2>
+                        <p class="text-xs md:text-sm text-gray-500">Colaboração para educação ambiental</p>
+                        <p class="mt-2 text-gray-700 text-sm">
+                            Contamos com a parceria de <strong>Petrobras TAMAR</strong>, <strong>Instituto Baleia
+                                Jubarte</strong> e outras organizações.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Imagem ao lado -->
+            <div class="flex justify-center">
+
+
+
+                <img src="img/sdfgh.png" alt="Crianças aprendendo sobre o mar"
+                    class="rounded-2xl shadow-lg w-full h-[1000px] object-cover" />
+
+            </div>
+        </div>
+    </section>
+    <br>
+    <img src="img/Tema do ENEM (Informativo).png">
+    <section class="w-full bg-gray-100 py-12">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="bg-white rounded-2xl shadow-lg p-6 md:p-10 hover:shadow-xl transition">
+                <div class="flex items-start justify-between gap-6">
+                    <div class="flex-1">
+                        <h2 class="text-lg md:text-2xl font-semibold mb-3">Preservar a biodiversidade marinha: um
+                            compromisso com o futuro</h2>
+                        <p id="texto-redacao" class="text-sm md:text-base text-gray-700 leading-relaxed">
+                            Os oceanos cobrem a maior parte do planeta e concentram uma enorme diversidade de espécies
+                            que garantem o equilíbrio ecológico global. Preservar a biodiversidade marinha é essencial
+                            não apenas para manter a vida aquática, mas também para assegurar condições de sobrevivência
+                            humana diante das mudanças climáticas e da exploração desenfreada dos recursos naturais.
+                            <br> <br>
+                            As atividades humanas, entre elas a pesca predatória, a poluição por plásticos e a
+                            exploração de petróleo e gás, estão entre os maiores desafios para os ecossistemas marinhos.
+                            Em especial, as plataformas de petróleo — embora fundamentais para a economia mundial —
+                            representam riscos significativos. Vazamentos de óleo, ainda que acidentais, podem
+                            comprometer vastas áreas costeiras, sufocar corais, prejudicar aves e mamíferos marinhos e
+                            afetar a qualidade da água por décadas. Além disso, a construção e operação dessas
+                            estruturas alteram habitats e interferem nas rotas migratórias de diversas espécies.
+                            <br> <br>
+                            Somado a isso, a biodiversidade marinha tem papel central no enfrentamento da crise
+                            climática: os oceanos absorvem grandes quantidades de dióxido de carbono e ajudam a regular
+                            o clima da Terra. Quando seu equilíbrio é rompido, perde-se também essa função vital,
+                            agravando os impactos do aquecimento global.
+                            <br> <br>
+                            Preservar os mares, portanto, significa proteger os serviços ambientais que sustentam a
+                            humanidade. Mais do que um desafio global, é um compromisso local: reduzir impactos das
+                            plataformas de petróleo por meio de fiscalização rigorosa, investir em tecnologias mais
+                            seguras e apoiar políticas de conservação são passos essenciais para assegurar um futuro
+                            equilibrado e sustentável.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+    <br>
+    <!-- Seção de Jogos -->
+    <section class="py-20 bg-white" id="jogos">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">
+                JOGOS EDUCATIVOS
+            </h2>
+
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+
+                <!-- Capa do jogo -->
+                <div class="bg-gray-200 rounded-2xl overflow-hidden shadow-lg">
+                    <img src="img/Sem nome (1920 x 1080 px).png" alt="Capa do Jogo"
+                        class="w-full h-[350px] object-cover">
+                </div>
+
+                <!-- Nome + descrição + botão -->
+                <div>
+                    <h3 class="text-2xl md:text-3xl font-bold mb-4">
+                        Oceanbound
+                    </h3>
+
+                    <p class="text-gray-600 mb-6 text-sm md:text-base leading-relaxed">
+                        O jogador é uma pessoa que sempre protegeu a natureza. Um espírito marinho chamado Toni desperta
+                        o protagonista e explica que, devido às perfurações das plataformas de petróleo, espíritos
+                        antigos do mar foram libertados.
+
+                        Esses espíritos perturbados atacam trabalhadores das plataformas e pessoas na costa e, quando
+                        ficam muito enfraquecidos ou irritados, causam fenômenos naturais intensos.
+
+                        O protagonista é convocado pelos espíritos do mar para integrar a organização BIP, que tem como
+                        missão acalmar e harmonizar os espíritos, restaurando o equilíbrio entre atividade humana e
+                        biodiversidade.
+                    </p>
+
+                    <a href="scrr.html" class="inline-block bg-[#0E143F] text-white px-8 py-3 rounded-full 
+                   font-bold text-lg shadow hover:shadow-lg transition">
+                        CONHEÇA MAIS SOBRE
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#0E143F] text-gray-200 py-12 px-6 relative mt-auto">
+        <div class="container mx-auto grid md:grid-cols-3 gap-8 text-center">
+            <div>
+                <h3 class="font-semibold text-lg mb-4">Contato</h3>
+                <p>Projeto BIP</p>
+                <p>Rua das Ondas, 123 - Ubatuba</p>
+                <p>Email: projetoBIP@gmail.com</p>
+                <ul class="space-y-2 mt-2">
+                    <li><a href="#" class="hover:text-white">Instagram</a></li>
+                    <li><a href="#" class="hover:text-white">Twitter</a></li>
+                    <li><a href="#" class="hover:text-white">Facebook</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="font-semibold text-lg mb-4">Nossos Projetos</h3>
+                <ul class="space-y-2">
+                    <li><a href="intenvenções.html" class="hover:text-white">Proteção de Baleias</a></li>
+                    <li><a href="intenvenções.html" class="hover:text-white">Limpeza de Praias</a></li>
+                    <li><a href="intenvenções.html" class="hover:text-white">Educação Ambiental</a></li>
+                    <li><a href="intenvenções.html" class="hover:text-white">Monitoramento de Corais</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="font-semibold text-lg mb-4">Para Visitantes</h3>
+                <ul class="space-y-2">
+                    <li><a href="podcast.html" class="hover:text-white">Eventos e Workshops</a></li>
+                    <li><a href="podcast.html" class="hover:text-white">Passeios Educativos</a></li>
+                    <li><a href="podcast.html" class="hover:text-white">Voluntariado</a></li>
+                    <li><a href="podcast.html" class="hover:text-white">Doações</a></li>
+                    <li><a href="podcast.html" class="hover:text-white">Como Ajudar</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="mt-12 text-center">
+            <h1 class="text-mask">PROJETO BIP</h1>
+        </div>
+
+        <div class="text-center text-gray-400 mt-8 text-sm">
+            © 2024 PROJETO BIP. Todos os direitos reservados. | Termos de Uso
+        </div>
+    </footer>
+
+
+    <script>
+        const doadores = [
+            { nome: "Ronaldo Balestero Junior", valor: "R$720,00" },
+            { nome: "Beatriz Oliveira", valor: "R$150,00" },
+            { nome: "Carlos Henrique", valor: "R$1.200,00" },
+            { nome: "Marina Souza", valor: "R$320,00" },
+            { nome: "João Victor", valor: "R$500,00" },
+            { nome: "Juvenilson Daniel", valor: "R$1240,00" },
+            { nome: "Ana Carolina Basilio", valor: "R$1000,00" },
+            { nome: "Ana Julia Mafra", valor: "R$3000,00" },
+        ];
+        let index = 0;
+        function atualizarDoacao() {
+            const nomeEl = document.getElementById("nome-doador");
+            const valorEl = document.getElementById("valor-doacao");
+            nomeEl.textContent = doadores[index].nome;
+            valorEl.textContent = `Doou ${doadores[index].valor}`;
+            index = (index + 1) % doadores.length;
+        }
+        setInterval(atualizarDoacao, 5000);
+
+        gsap.from("h1", { y: -50, opacity: 0, duration: 1 });
+    </script>
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
+</body>
+
+</html>
